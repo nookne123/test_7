@@ -72,7 +72,10 @@ func main() {
 							}
 							data, err := ioutil.ReadFile(filePath)
 							if err != nil {
-								fmt.Printf("\ncannot reading file input,%s\n", err.Error())
+								data, err = ioutil.ReadFile("../" + filePath)
+								if err != nil {
+									fmt.Printf("\ncannot reading file input,%s\n", err.Error())
+								}
 							}
 							// Call logic
 							result, err := logic.FindTheMostValuablePath(string(data))
